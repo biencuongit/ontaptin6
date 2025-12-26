@@ -2,9 +2,10 @@ import streamlit as st
 import random
 import time
 
-# ====================== DỮ LIỆU ĐỀ THI - NHẬP THỦ CÔNG TỪ TỆP ======================
+st.set_page_config(page_title="Kiểm tra Tin học 6 - HK1 2025-2026", layout="centered")
+st.title("✍️ Kiểm tra Tin học lớp 6 - Học kỳ 1 2025-2026")
 
-# PHẦN I: TRẮC NGHIỆM (56 câu)
+# ====================== DỮ LIỆU TRẮC NGHIỆM (56 câu) ======================
 trac_nghiem = [
     {"cau": 1, "question": "Phát biểu nào sau đây là đúng?", "options": ["A. Dữ liệu chỉ có thể được hiểu bởi những người có trình độ cao.", "B. Dữ liệu là những giá trị số do con người nghĩ ra.", "C. Dữ liệu được thể hiện dưới dạng con số, văn bản, hình ảnh, âm thanh.", "D. Dữ liệu chỉ có ở trong máy tính."], "answer": "C"},
     {"cau": 2, "question": "Xem bản tin dự báo thời tiết như Hình 1, bạn Khoa kết luận: \"Hôm nay, trời có mưa\". Phát biểu nào sau đây đúng?", "options": ["A. Bản tin dự báo thời tiết là dữ liệu, kết luận của Khoa là thông tin.", "B. Bản tin dự báo thời tiết là thông tin, kết luận của Khoa là dữ liệu.", "C. Những con số trong bản tin dự báo thời tiết là thông tin.", "D. Bản tin dự báo thời tiết và kết luận của Khoa đều là dữ liệu"], "answer": "A"},
@@ -16,7 +17,7 @@ trac_nghiem = [
     {"cau": 8, "question": "Thiết bị nào sau đây không phải là thiết bị ra của máy tính?", "options": ["A. Micro.", "B. Máy in.", "C. Màn hình.", "D. Loa."], "answer": "A"},
     {"cau": 9, "question": "Đặc điểm nào sau đây không thuộc về máy tính?", "options": ["A. Thực hiện nhanh và chính xác.", "B. Suy nghĩ sáng tạo", "C. Lưu trữ lớn", "D. Hoạt động bền bỉ"], "answer": "B"},
     {"cau": 10, "question": "Đơn vị đo dữ liệu nào sau đây là lớn nhất?", "options": ["A. Gigabyte.", "B. Megabyte,", "C. Kilobyte.", "D. Bit."], "answer": "A"},
-    {"cau": 11, "question": "Tệp ảnh Hà Nội có dung lượng bao nhiêu? (giả sử từ hình)", "options": ["A. 103 byte.", "B. 103 kilobit", "C. 103 kilobyte.", "D. 0,846 megabyte."], "answer": "C"},
+    {"cau": 11, "question": "Tệp ảnh Hà Nội có dung lượng bao nhiêu?", "options": ["A. 103 byte.", "B. 103 kilobit", "C. 103 kilobyte.", "D. 0,846 megabyte."], "answer": "C"},
     {"cau": 12, "question": "Dữ liệu được máy tính lưu trữ dưới dạng", "options": ["A. thông tin.", "B. dãy bít.", "C. số thập phân.", "D. các kí tự."], "answer": "B"},
     {"cau": 13, "question": "Dữ liệu trong máy tính được mã hoá thành dãy bít vì", "options": ["A. dãy bít đáng tin cậy hơn.", "B. dãy bít được xử lí dễ dàng hơn.", "C. dãy bít chiếm ít dung lượng nhớ hơn.", "D. máy tính chỉ làm việc với hai kí hiệu 0 và 1."], "answer": "D"},
     {"cau": 14, "question": "Một bít được biểu diễn bằng", "options": ["A. một chữ cái.", "B. một ki hiệu đặc biệt.", "C. kí hiệu 0 hoặc 1.", "D. chữ số bất kì."], "answer": "C"},
@@ -28,8 +29,9 @@ trac_nghiem = [
     {"cau": 20, "question": "Trong các nhận định sau, nhận định nào không phải là lợi ích của việc sử dụng mạng máy tính?", "options": ["A. Giảm chi phí khi dùng chung phần cứng.", "B. Người sử dụng có quyền kiểm soát độc quyền đối với dữ liệu và ứng dụng của riêng họ.", "C. Giảm chi phí khi dùng chung phần mềm.", "D. Cho phép chia sẻ dữ liệu, tăng hiệu quả sử dụng."], "answer": "B"},
     {"cau": 21, "question": "Phát biểu nào sau đây không chính xác?", "options": ["A. Mạng không dây thuận tiện cho những người di chuyển nhiều.", "B. Mạng không dây dễ dàng lắp đặt hơn vì không cần khoan đục và lắp đặt đường dây.", "C. Mạng không dây thường được sử dụng cho các thiết bị di động như máy tính bảng, điện thoại,...", "D. Mạng không dây nhanh và ổn định hơn mạng có dây."], "answer": "D"},
     {"cau": 22, "question": "Mạng máy tính gồm các thành phần:", "options": ["A. Máy tính và thiết bị kết nối.", "B. Thiết bị đầu cuối và thiết bị kết nối.", "C. Thiết bị đầu cuối, thiết bị kết nối và phần mềm mạng.", "D. Máy tính và phần mềm mạng."], "answer": "C"},
-    {"cau": 23, "question": "Ghép hành động của Sherlock Holmes với hoạt động xử lí thông tin (theo truyện)", "options": ["A. 1 - c ; 2 – d ;3 – a ; 4 – b", "B. 4 – b; 1 – c ; 2 – d ;3 – a", "C. 1 - c ; 2 – d ; 4 – b ;3 – a", "D. 1 - c ; 4 – b ; 2 – d ;3 – a"], "answer": "D"},
-    {"cau": 24, "question": "Ghép mỗi ô ở cột bên trái với một ô ở cột bên phải cho phù hợp.", "options": ["A. 1 - c ; 2 – d ;3 – a ; 4 – b", "B. 4 – b; 1 – c ; 2 – d ;3 – a", "C. 1 - c ; 2 – d ; 4 – b ;3 – a", "D. 1 - c ; 4 – b ; 2 – d ;3 – a"], "answer": "D"},
+    # Các câu ghép đôi 23,24 có thể xử lý như trắc nghiệm thông thường với đáp án A/B/C/D
+    {"cau": 23, "question": "Ghép hành động của Sherlock Holmes với hoạt động xử lí thông tin (truyện 'Cuộc điều tra màu đỏ')", "options": ["A. 1-c; 2-d; 3-a; 4-b", "B. 4-b; 1-c; 2-d; 3-a", "C. 1-c; 2-d; 4-b; 3-a", "D. 1-c; 4-b; 2-d; 3-a"], "answer": "D"},
+    {"cau": 24, "question": "Ghép mỗi ô ở cột bên trái với một ô ở cột bên phải cho phù hợp.", "options": ["A. 1-c; 2-d; 3-a; 4-b", "B. 4-b; 1-c; 2-d; 3-a", "C. 1-c; 2-d; 4-b; 3-a", "D. 1-c; 4-b; 2-d; 3-a"], "answer": "D"},
     {"cau": 25, "question": "Thông tin là gì?", "options": ["A. Các văn bản và số liệu.", "B. Những gì đem lại hiểu biết cho con người về thế giới xung quanh và về chính bản thân mình.", "C. Văn bản, Hình ảnh, âm thanh.", "D. Hình ảnh, âm thanh, tệp tin."], "answer": "B"},
     {"cau": 26, "question": "Thứ tự các hoạt động của quá trình xử lý thông tin bao gồm những gì?", "options": ["A. Thu nhận, lưu trữ, xử lý và truyền thông tin.", "B. Thu nhận, xử lý, lưu trữ và truyền thông tin.", "C. Thu nhận, xử lý, truyền thông tin và lưu trữ.", "D. Xử lý, thu nhận, lưu trữ và truyền thông tin."], "answer": "B"},
     {"cau": 27, "question": "Máy tính gồm có bao nhiêu thành phần thực hiện các hoạt động xử lý thông tin", "options": ["A. 2", "B. 3", "C. 4", "D. 5"], "answer": "C"},
@@ -64,26 +66,19 @@ trac_nghiem = [
     {"cau": 56, "question": "Để tìm kiếm thông tin về ngày thành lập quân đội nhân dân Việt Nam 22/12 em sử dụng từ khóa nào sau đây để thu hẹp phạm vi tìm kiếm?", "options": ["A. Ngày thành lập quân đội nhân dân Việt Nam 22/12.", "B. Quân đội nhân dân Việt Nam.", "C. “Quân đội nhân dân” + “Việt Nam”.", "D. “Ngày thành lập quân đội nhân dân Việt Nam 22/12”."], "answer": "D"},
 ]
 
-# PHẦN II: TỰ LUẬN (8 câu)
+# ====================== DỮ LIỆU TỰ LUẬN (8 câu) ======================
 tu_luan = [
     {"cau": 57, "question": "Máy tìm kiếm là gì?", "dap_an": "Máy tìm kiếm là một website đặc biệt, giúp người sử dụng tìm kiếm thông tin trên Internet một cách nhanh chóng, hiệu quả thông qua các từ khóa."},
-    {"cau": 58, "question": "Nêu những ưu, nhược điểm cơ bản của dịch vụ thư điện tử.", "dap_an": "- Ưu điểm: chi phí thấp, tiết kiệm thời gian, thuận tiện, gửi kèm tệp dễ dàng...\n- Nhược điểm: phải sử dụng phương tiện điện tử kết nối mạng, có thể gặp một số nguy cơ, phiền toái (thư rác, virus...)."},
+    {"cau": 58, "question": "Nêu những ưu, nhược điểm cơ bản của dịch vụ thư điện tử.", "dap_an": "- Ưu điểm: chi phí thấp, tiết kiệm thời gian, thuận tiện, gửi kèm tệp dễ dàng...\n- Nhược điểm: cần kết nối Internet, có nguy cơ bảo mật, virus, thư rác..."},
     {"cau": 59, "question": "Trong chuyến du lịch cùng gia đình, An đã sử dụng điện thoại để chụp ảnh và gửi cho bạn thân của mình. Vậy điện thoại đã giúp An thu thập, lưu trữ và truyền thông tin như thế nào?", "dap_an": "- Chụp ảnh: thu nhận thông tin.\n- Lưu trong bộ nhớ điện thoại: lưu trữ thông tin.\n- Gửi cho bạn: truyền thông tin."},
-    {"cau": 60, "question": "Một bài hát có dung lượng 2MB, vậy USB 32GB có thể chứa bao nhiêu bài hát?", "dap_an": "32GB = 32 × 1024 = 32768 MB\n32768 ÷ 2 = 16384 bài hát."},
+    {"cau": 60, "question": "Một bài hát có dung lượng 2MB, vậy USB 32GB có thể chứa bao nhiêu bài hát?", "dap_an": "32GB = 32 × 1024 = 32768 MB → 32768 ÷ 2 = 16384 bài hát."},
     {"cau": 61, "question": "Website là gì?", "dap_an": "Website là tập hợp các trang web liên quan được truy cập thông qua một địa chỉ."},
-    {"cau": 62, "question": "So sánh việc tìm kiếm thông tin bằng từ khóa và từ khóa đặt trong dấu ngoặc kép.", "dap_an": "- Từ khóa thường: tìm các trang có chứa từng từ riêng lẻ → kết quả rộng.\n- Trong ngoặc kép: tìm chính xác cụm từ → kết quả sát hơn."},
+    {"cau": 62, "question": "So sánh việc tìm kiếm thông tin bằng từ khóa và từ khóa đặt trong dấu ngoặc kép.", "dap_an": "- Từ khóa thường: tìm các trang chứa từng từ riêng lẻ (kết quả rộng).\n- Trong ngoặc kép: tìm chính xác cụm từ đó (kết quả chính xác hơn)."},
     {"cau": 63, "question": "Trong buổi sinh hoạt dưới cờ, Thầy Quy đã sử dụng điện thoại để chụp hình và sử dụng Zalo gửi cho thầy Cương. Vậy điện thoại đã giúp thầy Quy thu thập, lưu trữ và truyền thông tin như thế nào?", "dap_an": "- Chụp hình: thu nhận thông tin.\n- Lưu trong bộ nhớ: lưu trữ thông tin.\n- Gửi qua Zalo: truyền thông tin."},
-    {"cau": 64, "question": "Một ổ cứng có dung lượng là 64GB. Hiện tại ổ cứng này đã chứa tệp video 4GB. Vậy ổ cứng này có thể chứa thêm tối đa bao nhiêu tệp ảnh. Biết rằng mỗi tệp ảnh có dung lượng 5MB.", "dap_an": "Dung lượng còn lại: 64 - 4 = 60GB = 60 × 1024 = 61440 MB\n61440 ÷ 5 = 12288 tệp ảnh."},
+    {"cau": 64, "question": "Một ổ cứng có dung lượng là 64GB. Hiện tại ổ cứng này đã chứa tệp video 4GB. Vậy ổ cứng này có thể chứa thêm tối đa bao nhiêu tệp ảnh. Biết rằng mỗi tệp ảnh có dung lượng 5MB.", "dap_an": "Dung lượng còn lại: 64 - 4 = 60GB = 60 × 1024 = 61440 MB → 61440 ÷ 5 = 12288 tệp ảnh."},
 ]
 
-# ====================== ỨNG DỤNG STREAMLIT ======================
-st.set_page_config(page_title="Kiểm tra Tin học 6 - HK1 2025-2026", layout="centered")
-st.title("📘 Kiểm tra học kỳ 1 - Tin học lớp 6")
-st.markdown("**Năm học 2025-2026**")
-
-# Khởi tạo session state
-if 'mode' not in st.session_state:
-    st.session_state.mode = None
+# ====================== SESSION STATE ======================
 if 'ten_hs' not in st.session_state:
     st.session_state.ten_hs = ""
 if 'lop' not in st.session_state:
@@ -94,142 +89,101 @@ if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 if 'answers' not in st.session_state:
     st.session_state.answers = {}
-if 'shuffled_tracnghiem' not in st.session_state:
-    st.session_state.shuffled_tracnghiem = []
+if 'shuffled_trac_nghiem' not in st.session_state:
+    st.session_state.shuffled_trac_nghiem = []
 
-# Trang chọn chế độ
-if st.session_state.mode is None:
-    st.markdown("### 🎯 Chọn chế độ làm bài")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("📚 **Chế độ Ôn tập** (xem đáp án ngay)", use_container_width=True):
-            st.session_state.mode = "on_tap"
+# ====================== GIAO DIỆN ======================
+if not st.session_state.ten_hs:
+    st.markdown("### Nhập thông tin học sinh để bắt đầu làm bài")
+    ten = st.text_input("Họ và tên")
+    lop = st.text_input("Lớp (ví dụ: 6A1)")
+    if st.button("Bắt đầu làm bài"):
+        if ten and lop:
+            st.session_state.ten_hs = ten
+            st.session_state.lop = lop
+            st.session_state.start_time = time.time()
+            # Đảo ngẫu nhiên câu hỏi và đáp án trắc nghiệm
+            st.session_state.shuffled_trac_nghiem = trac_nghiem[:]
+            random.shuffle(st.session_state.shuffled_trac_nghiem)
+            for q in st.session_state.shuffled_trac_nghiem:
+                ans = q['answer']
+                opts = q['options'][:]
+                random.shuffle(opts)
+                q['shuffled_options'] = opts
+                q['correct_option'] = next(o for o in opts if o.startswith(ans))
             st.rerun()
-    with col2:
-        if st.button("✍️ **Chế độ Kiểm tra** (như thi thật)", use_container_width=True):
-            st.session_state.mode = "kiem_tra"
-            st.rerun()
-
-# Chế độ ôn tập
-if st.session_state.mode == "on_tap":
-    st.success("📖 Chế độ ôn tập - Xem câu hỏi và đáp án chi tiết")
-    tabs = st.tabs(["Trắc nghiệm (56 câu)", "Tự luận (8 câu)"])
-    with tabs[0]:
-        for q in trac_nghiem:
-            st.markdown(f"**Câu {q['cau']}.** {q['question']}")
-            for opt in q['options']:
-                if opt.startswith(q['answer']):
-                    st.success(opt + " ← Đáp án đúng")
-                else:
-                    st.write(opt)
-            st.markdown("---")
-    with tabs[1]:
-        for q in tu_luan:
-            st.markdown(f"**Câu {q['cau']}.** {q['question']}")
-            st.info(q['dap_an'])
-            st.markdown("---")
-
-# Chế độ kiểm tra
-if st.session_state.mode == "kiem_tra":
-    # Nhập thông tin học sinh
-    if not st.session_state.ten_hs:
-        st.info("Vui lòng nhập thông tin trước khi làm bài")
-        ten = st.text_input("Họ và tên học sinh")
-        lop = st.text_input("Lớp (ví dụ: 6A1, 6A2)")
-        if st.button("Bắt đầu làm bài"):
-            if ten.strip() and lop.strip():
-                st.session_state.ten_hs = ten.strip()
-                st.session_state.lop = lop.strip()
-                st.session_state.start_time = time.time()
-
-                # Đảo ngẫu nhiên câu hỏi trắc nghiệm và đáp án
-                shuffled = trac_nghiem.copy()
-                random.shuffle(shuffled)
-                for q in shuffled:
-                    correct_opt = q['answer']
-                    opts = q['options'].copy()
-                    random.shuffle(opts)
-                    q['shuffled_options'] = opts
-                    q['correct_option_text'] = next(o for o in opts if o.startswith(correct_opt))
-                st.session_state.shuffled_tracnghiem = shuffled
-                st.rerun()
-            else:
-                st.error("Vui lòng nhập đầy đủ tên và lớp!")
-    else:
-        st.markdown(f"**Học sinh:** {st.session_state.ten_hs} **Lớp:** {st.session_state.lop}")
-
-        # Đồng hồ đếm ngược 45 phút
-        if st.session_state.start_time:
-            elapsed = time.time() - st.session_state.start_time
-            remaining = max(2700 - int(elapsed), 0)
-            mins, secs = divmod(remaining, 60)
-            st.markdown(f"⏰ **Thời gian còn lại:** {mins:02d}:{secs:02d}")
-
-            if remaining == 0 and not st.session_state.submitted:
-                st.session_state.submitted = True
-                st.rerun()
-
-        if not st.session_state.submitted:
-            st.markdown("### Phần I: Trắc nghiệm (56 câu - mỗi câu 0.15 điểm)")
-            for i, q in enumerate(st.session_state.shuffled_tracnghiem):
-                st.write(f"**Câu {i+1}:** {q['question']}")
-                key = f"tn_{i}"
-                chosen = st.radio("Chọn đáp án:", q['shuffled_options'], key=key, label_visibility="collapsed")
-                st.session_state.answers[key] = chosen
-
-            st.markdown("### Phần II: Tự luận (8 câu)")
-            for i, q in enumerate(tu_luan):
-                st.markdown(f"**Câu {q['cau']}:** {q['question']}")
-                key = f"tl_{i}"
-                st.session_state.answers[key] = st.text_area("Trả lời:", key=key, height=120, label_visibility="collapsed")
-
-            if st.button("📤 **NỘP BÀI**", type="primary", use_container_width=True):
-                st.session_state.submitted = True
-                st.rerun()
-
-        # Kết quả
         else:
-            # Chấm trắc nghiệm
-            diem_tracnghiem = 0
-            for i, q in enumerate(st.session_state.shuffled_tracnghiem):
-                key = f"tn_{i}"
-                user_answer = st.session_state.answers.get(key, "")
-                if user_answer == q['correct_option_text']:
-                    diem_tracnghiem += 0.15
+            st.error("Vui lòng nhập đầy đủ họ tên và lớp!")
 
-            # Tự luận tạm cho tối đa 1.6 điểm (có thể chấm tay sau)
-            diem_tuluan = 1.6
-            tong_diem = round(diem_tracnghiem + diem_tuluan, 1)
+else:
+    st.markdown(f"**Học sinh:** {st.session_state.ten_hs} — **Lớp:** {st.session_state.lop}")
 
+    # Đồng hồ đếm ngược 45 phút
+    if st.session_state.start_time:
+        elapsed = time.time() - st.session_state.start_time
+        remaining = max(2700 - elapsed, 0)
+        mins, secs = divmod(int(remaining), 60)
+        st.markdown(f"**⏰ Thời gian còn lại:** {mins:02d}:{secs:02d}")
+
+        if remaining <= 0 and not st.session_state.submitted:
+            st.session_state.submitted = True
+            st.rerun()
+
+    if not st.session_state.submitted:
+        st.markdown("### Phần I: Trắc nghiệm (56 câu)")
+        for i, q in enumerate(st.session_state.shuffled_trac_nghiem):
+            st.write(f"**Câu {i+1}:** {q['question']}")
+            key = f"tn_{i}"
+            chosen = st.radio("Chọn đáp án:", q['shuffled_options'], key=key, label_visibility="collapsed")
+            st.session_state.answers[key] = chosen
+
+        st.markdown("### Phần II: Tự luận (8 câu - chỉ xem đáp án nếu đạt ≥ 6 điểm trắc nghiệm)")
+        for i, q in enumerate(tu_luan):
+            key = f"tl_{i}"
+            st.write(f"**Câu {q['cau']}:** {q['question']}")
+            st.text_area("Trả lời:", key=key, height=120, label_visibility="collapsed")
+
+        if st.button("NỘP BÀI", type="primary", use_container_width=True):
+            st.session_state.submitted = True
+            st.rerun()
+
+    else:
+        # Chấm điểm trắc nghiệm
+        diem_trac_nghiem = 0
+        for i, q in enumerate(st.session_state.shuffled_trac_nghiem):
+            key = f"tn_{i}"
+            if st.session_state.answers.get(key) == q['correct_option']:
+                diem_trac_nghiem += 0.15
+        diem_trac_nghiem = round(diem_trac_nghiem, 2)
+
+        st.success(f"### Kết quả kiểm tra - {st.session_state.ten_hs} - Lớp {st.session_state.lop}")
+        st.markdown(f"**Điểm phần trắc nghiệm:** {diem_trac_nghiem}/8.4")
+
+        if diem_trac_nghiem >= 6.0:
             st.balloons()
-            st.success(f"### 🎉 Kết quả kiểm tra")
-            st.markdown(f"**Học sinh:** {st.session_state.ten_hs}  |  **Lớp:** {st.session_state.lop}")
-            st.markdown(f"**Điểm số:** {tong_diem} / 10")
+            st.success("🎉 Chúc mừng! Bạn đã đạt ≥ 6 điểm trắc nghiệm → Được xem đáp án chi tiết")
 
-            if tong_diem >= 6.0:
-                st.success("🎊 Chúc mừng! Bạn đạt từ 6 điểm trở lên → Được xem đáp án chi tiết")
+            st.markdown("#### Đáp án trắc nghiệm")
+            for i, q in enumerate(st.session_state.shuffled_trac_nghiem):
+                user_ans = st.session_state.answers.get(f"tn_{i}", "Chưa chọn")
+                st.write(f"**Câu {i+1}:** Đáp án đúng → **{q['correct_option']}**")
+                if user_ans == q['correct_option']:
+                    st.success("Đúng ✅")
+                else:
+                    st.error(f"Sai ❌ (Bạn chọn: {user_ans})")
 
-                with st.expander("📌 Đáp án Trắc nghiệm"):
-                    for i, q in enumerate(st.session_state.shuffled_tracnghiem):
-                        user = st.session_state.answers.get(f"tn_{i}", "Chưa trả lời")
-                        correct = q['correct_option_text']
-                        st.write(f"**Câu {i+1}:** Đáp án đúng → **{correct}**")
-                        if user == correct:
-                            st.success("✅ Đúng")
-                        else:
-                            st.error(f"Sai - Bạn chọn: {user}")
+            st.markdown("#### Đáp án tự luận")
+            for q in tu_luan:
+                st.markdown(f"**Câu {q['cau']}:** {q['question']}")
+                st.info(q['dap_an'])
+                st.divider()
 
-                with st.expander("📝 Đáp án Tự luận"):
-                    for q in tu_luan:
-                        st.markdown(f"**Câu {q['cau']}:** {q['question']}")
-                        st.info(q['dap_an'])
-                        st.markdown("---")
-            else:
-                st.warning("📚 Bạn chưa đạt 6 điểm. Hãy ôn lại kỹ và làm lại nhé!\nĐáp án sẽ chỉ hiển thị khi bạn đạt từ 6 điểm trở lên.")
+        else:
+            st.warning("Bạn chưa đạt 6 điểm ở phần trắc nghiệm. Hãy ôn lại kỹ và làm lại bài để xem đáp án nhé!")
 
-            if st.button("🔄 Làm lại bài (xóa toàn bộ)"):
-                st.session_state.clear()
-                st.rerun()
+        if st.button("Làm lại bài"):
+            for key in list(st.session_state.keys()):
+                del st.session_state[key]
+            st.rerun()
 
-st.caption("Ứng dụng ôn tập và kiểm tra Tin học lớp 6 - Học kỳ 1 năm 2025-2026")
-
+st.caption("Ứng dụng kiểm tra Tin học 6 - Học kỳ 1 năm học 2025-2026")
