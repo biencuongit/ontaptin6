@@ -42,7 +42,7 @@ trac_nghiem = [
     {"cau": 34, "question": "Phát biểu nào sau đây không nêu đúng lợi ích của việc sử dụng Internet đối với học sinh?", "options": ["A. Giúp giải trí bằng cách xem mạng xã hội và chơi điện tử suốt ngày.", "B. Giúp nâng cao kiến thức bằng cách tham gia khóa học trực tuyến.", "C. Giúp tiết kiệm thời gian và cung cấp nhiều tư liệu làm bài tập.", "D. Giúp giao lưu kết bạn."], "answer": "A"},
     {"cau": 35, "question": "Trong trường hợp nào dưới đây mạng không dây tiện dụng hơn mạng có dây?", "options": ["A. Mạng không dây ổn định hơn mạng có dây.", "B. Các thiết bị có thể linh hoạt thay đổi vị trí mà vẫn duy trì kết nối mạng.", "C. Mạng không dây trao đổi thông tin tốc độ cao hơn mạng có dây.", "D. Mạng không dây trao đổi thông tin có tính bảo mật cao hơn mạng có dây."], "answer": "A"},
     {"cau": 36, "question": "Phát biểu nào sau đây là SAI?", "options": ["A. Mạng không dây thuận tiện cho những người di chuyển nhiều.", "B. Mạng không dây nhanh và ổn định hơn mạng có dây.", "C. Mạng không dây thường được sử dụng cho các thiết bị di động như máy tính bảng, điện thoại,...", "D. Mạng không dây dễ dàng lắp đặt hơn vì không cần khoan đục, lắp đặt đường dây."], "answer": "B"},
-    {"cau": 37, "question": "World Wide Web là gì?", "options": ["A. Một trò chơi máy tính.", "B. Mạng thông tin toàn cầu.", "C. Một phần mềm máy tính.", "D. Tên khác của Internet."], "answer": "D"},
+    {"cau": 37, "question": "World Wide Web là gì?", "options": ["A. Một trò chơi máy tính.", "B. Mạng thông tin toàn cầu.", "C. Một phần mềm máy tính.", "D. Tên khác của Internet."], "answer": "B"},
     {"cau": 38, "question": "Mỗi website bắt buộc phải có", "options": ["A. tên cá nhân hoặc tổ chức sở hữu.", "B. một địa chỉ truy cập.", "C. địa chỉ trụ sở của đơn vị sở hữu.", "D. địa chỉ thư điện tử."], "answer": "B"},
     {"cau": 39, "question": "Phần mềm giúp người sử dụng truy cập các trang web trên Internet gọi là gì?", "options": ["A. Website.", "B. Địa chỉ web.", "C. Trình duyệt web.", "D. Công cụ tìm kiếm."], "answer": "C"},
     {"cau": 40, "question": "Địa chỉ trang web nào sau đây là hợp lệ?", "options": ["A. https \\: www. tienphong.vn .", "B. www \\ tienphong.vn .", "C. https://www.tienphong.vn .", "D.  //ww: tienphong.vn ."], "answer": "C"},
@@ -52,7 +52,7 @@ trac_nghiem = [
     {"cau": 44, "question": "Phát biểu nào sau đây không nêu đúng lợi ích của việc sử dụng Internet đối với học sinh?", "options": ["A. Giúp giải trí bằng cách chơi trò chơi trực tuyến suốt ngày.", "B. Giúp nâng cao kiến thức bằng cách tham gia khóa học trực tuyến.", "C. Giúp tiết kiệm thời gian và cung cấp nhiều tư liệu làm bài tập.", "D. Giúp giao lưu kết bạn."], "answer": "A"},
     {"cau": 45, "question": "Tại sao thư điện tử nhanh hơn thư truyền thống?", "options": ["A. Vì phải chờ nhân viên bưu điện giao.", "B. Vì gửi và nhận tức thì qua mạng Internet.", "C. Vì viết tay chậm.", "D. Vì cần giấy mực."], "answer": "B"},
     {"cau": 46, "question": "Ưu điểm chính của thư điện tử so với thư truyền thống là gì?", "options": ["A. Có tính pháp lý cao hơn.", "B. Nhanh chóng, chi phí thấp, gửi kèm tệp dễ dàng.", "C. Có thể gửi vật liệu thực tế.", "D. Không cần mạng."], "answer": "B"},
-    {"cau": 47, "question": "World Wide Web là gì?", "options": ["A. Một trò chơi máy tính.", "B. Mạng thông tin toàn cầu.", "C. Một phần mềm máy tính.", "D. Tên khác của Internet."], "answer": "D"},
+    {"cau": 47, "question": "World Wide Web là gì?", "options": ["A. Một trò chơi máy tính.", "B. Mạng thông tin toàn cầu.", "C. Một phần mềm máy tính.", "D. Tên khác của Internet."], "answer": "B"},
     {"cau": 48, "question": "Một người có thể mở bao nhiêu tài khoản thư điện tử?", "options": ["A. Chỉ một tài khoản duy nhất.", "B. Nhiều tài khoản với các tên khác nhau.", "C. Không thể mở tài khoản.", "D. Chỉ hai tài khoản."], "answer": "B"},
     {"cau": 49, "question": "Phần mềm giúp người sử dụng truy cập các trang web trên Internet gọi là gì?", "options": ["A. Website.", "B. Địa chỉ web.", "C. Trình duyệt web.", "D. Công cụ tìm kiếm."], "answer": "C"},
     {"cau": 50, "question": "Địa chỉ trang web nào sau đây là hợp lệ?", "options": ["A. https \\: www. thanhnien.vn .", "B. www \\ thanhnien.vn .", "C. https://www.thanhnien.vn .", "D.  //ww: thanhnien.vn ."], "answer": "C"},
@@ -232,3 +232,4 @@ if st.session_state.mode == "kiem_tra":
                 st.rerun()
 
 st.caption("Ứng dụng ôn tập và kiểm tra Tin học lớp 6 - Học kỳ 1 năm 2025-2026")
+
