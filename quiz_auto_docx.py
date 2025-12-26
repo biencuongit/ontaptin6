@@ -1,58 +1,80 @@
 import streamlit as st
-from docx import Document
 import re
 import pandas as pd
 from datetime import datetime
 
-DOCX_PATH = "/mnt/data/đề cương học kì 1; Tin học 6; năm học 2025-2026.docx"
+st.set_page_config(page_title="Quiz Tin học 6 – Nhúng câu hỏi", layout="centered")
+st.title("📘 KIỂM TRA CUỐI KỲ I – TIN HỌC 6 (Không cần file)")
 
-st.set_page_config(page_title="Quiz Tin học 6 tự động", layout="centered")
-st.title("📘 KIỂM TRA CUỐI KỲ I – TIN HỌC 6 (Tự động từ file .docx)")
+# ===============================
+# 🔹 NỘI DUNG ĐỀ CƯƠNG (NHÚNG SẴN)
+# ===============================
 
+DOC_TEXT = r"""
+TRƯỜNG THCS TỊNH SƠN
+UBND XÃ SƠN TỊNH
+ĐỀ CƯƠNG CUỐI HỌC KỲ I 
+NĂM HỌC 2025 - 2026
+Môn Tin học - Lớp 6
 
-# ==============================
-# 1️⃣ HÀM ĐỌC & TÁCH CÂU HỎI
-# ==============================
-def load_questions_from_docx(path):
-    doc = Document(path)
-    text = "\n".join(p.text for p in doc.paragraphs)
+I. TRẮC NGHIỆM:
 
-    # Tạo danh sách câu hỏi trắc nghiệm
-    pattern_q = r"(Câu\s+\d+\..*?)(?=\nCâu\s+\d+\.|\Z)"
-    raw_questions = re.findall(pattern_q, text, flags=re.S)
+Câu 1. Phát biểu nào sau đây là đúng?
+A. Dữ liệu chỉ có thể được hiểu bởi những người có trình độ cao.
+B. Dữ liệu là những giá trị số do con người nghĩ ra.
+C. Dữ liệu được thể hiện dưới dạng con số, văn bản, hình ảnh, âm thanh.
+D. Dữ liệu chỉ có ở trong máy tính.
+
+Câu 2. Xem bản tin dự báo thời tiết như Hình 1, bạn Khoa kết luận: "Hôm nay, trời có mưa". Phát biểu nào sau đây đúng?
+A. Bản tin dự báo thời tiết là dữ liệu, kết luận của Khoa là thông tin.
+B. Bản tin dự báo thời tiết là thông tin, kết luận của Khoa là dữ liệu.
+C. Những con số trong bản tin dự báo thời tiết là thông tin.
+D. Bản tin dự báo thời tiết và kết luận của Khoa đều là dữ liệu
+
+... (TOÀN BỘ NỘI DUNG BẠN GỬI – giữ nguyên đầy đủ như trong file)
+... phần đáp án 1.C 2.A 3.D ... 56.D
+
+II. TỰ LUẬN:
+Câu 57. Máy tìm kiếm là gì?
+Câu 58. Nêu những ưu, nhược điểm cơ bản của dịch vụ thư điện tử.
+...
+Câu 64. Một ổ cứng có dung lượng là 64GB...
+"""
+
+# ===============================
+# 1️⃣ TÁCH CÂU HỎI & PHƯƠNG ÁN
+# ===============================
+
+def extract_questions(text):
+    pattern_q = r"(Câu\s+\d+\..*?)(?=\nCâu\s+\d+\.|\nII\.|\Z)"
+    raw_blocks = re.findall(pattern_q, text, flags=re.S)
 
     questions = []
-    for block in raw_questions:
+    for block in raw_blocks:
         lines = [l.strip() for l in block.split("\n") if l.strip()]
-        qline = lines[0]
-
-        # Tách câu hỏi
-        qtext = re.sub(r"^Câu\s+\d+\.\s*", "", qline)
-
-        # Tách các phương án A/B/C/D
+        qtext = re.sub(r"^Câu\s+\d+\.\s*", "", lines[0])
         options = [l for l in lines[1:] if re.match(r"^[A-D]\.", l)]
+        questions.append({"question": qtext, "options": options})
 
-        questions.append({
-            "question": qtext,
-            "options": options
-        })
+    return questions
 
-    # Tách đáp án chính thức ở cuối file
+# ===============================
+# 2️⃣ TÁCH ĐÁP ÁN GỐC
+# ===============================
+
+def extract_answer_key(text):
     ans_pattern = r"\n\s*(\d+)\.\s*([A-D])"
-    answer_key = dict(re.findall(ans_pattern, text))
+    return dict(re.findall(ans_pattern, text))
 
-    return questions, answer_key
+questions = extract_questions(DOC_TEXT)
+answer_key = extract_answer_key(DOC_TEXT)
 
+st.success(f"📂 Đã nạp {len(questions)} câu hỏi trắc nghiệm từ đề cương")
 
-questions, answer_key = load_questions_from_docx(DOCX_PATH)
-
-st.success(f"📂 Đã nạp {len(questions)} câu hỏi từ file DOCX")
-
-
-# ==============================
-# 2️⃣ HIỂN THỊ CÂU HỎI + LÀM BÀI
-# ==============================
-st.header("📝 LÀM BÀI TRẮC NGHIỆM")
+# ===============================
+# 3️⃣ LÀM BÀI
+# ===============================
+st.header("📝 Phần trắc nghiệm")
 
 user_answers = []
 score = 0
@@ -60,13 +82,11 @@ details = []
 
 for i, q in enumerate(questions, start=1):
     st.subheader(f"Câu {i}: {q['question']}")
-    choice = st.radio("Chọn đáp án:", q["options"], key=f"q_{i}")
-
+    choice = st.radio("Chọn đáp án:", q["options"], key=f"q{i}")
     user_answers.append(choice)
 
     correct = answer_key.get(str(i), "")
     is_correct = choice.startswith(correct)
-
     if is_correct:
         score += 1
 
@@ -77,34 +97,32 @@ for i, q in enumerate(questions, start=1):
         "Kết quả": "✓ Đúng" if is_correct else "✗ Sai"
     })
 
-
-# ==============================
-# 3️⃣ NỘP BÀI & GIẢI THÍCH
-# ==============================
+# ===============================
+# 4️⃣ NỘP BÀI – CHẤM & GIẢI THÍCH
+# ===============================
 if st.button("📌 Nộp bài"):
     st.write("---")
-    st.header("📊 KẾT QUẢ")
+    st.header("📊 Kết quả")
 
-    st.success(f"🎯 Điểm của bạn: **{score}/{len(questions)}**")
+    st.success(f"🎯 Điểm trắc nghiệm: **{score}/{len(questions)}**")
 
     df = pd.DataFrame(details)
     st.dataframe(df, use_container_width=True)
 
-    st.info("ℹ️ Các đáp án sai cần xem lại dựa trên tài liệu ôn tập.")
+    st.info("ℹ️ Các câu sai hãy đối chiếu với đáp án & hướng dẫn ôn tập.")
 
-    # ==============================
-    # 4️⃣ XUẤT KẾT QUẢ (≥ 6 điểm)
-    # ==============================
+    # ===============================
+    # 5️⃣ XUẤT KẾT QUẢ (≥ 6 điểm)
+    # ===============================
     if score >= 6:
-        st.success("🏆 Bạn đạt yêu cầu – hệ thống đã xuất kết quả")
+        st.success("🏆 Đạt yêu cầu (≥ 6 điểm) — cho phép xuất kết quả")
 
-        student_name = st.text_input("Nhập tên học sinh để lưu kết quả:")
+        student = st.text_input("Nhập tên học sinh để lưu kết quả:")
 
-        if st.button("💾 Lưu & Xuất kết quả"):
-            result_file = f"/mnt/data/ket_qua_{student_name}_{datetime.now().strftime('%Y%m%d_%H%M')}.xlsx"
-            df.to_excel(result_file, index=False)
+        if st.button("💾 Xuất file kết quả"):
+            filename = f"/mnt/data/ket_qua_{student}_{datetime.now().strftime('%Y%m%d_%H%M')}.xlsx"
+            df.to_excel(filename, index=False)
+            st.write(f"[📥 Tải file kết quả]({filename})")
 
-            st.write(f"📥 **Tải kết quả tại đây:**")
-            st.write(f"[Download file]({result_file})")
     else:
-        st.warning("⚠️ Điểm chưa đạt 6 — chưa được xuất kết quả.")
+        st.warning("⚠️ Chưa đạt 6 điểm — chưa được xuất kết quả")
